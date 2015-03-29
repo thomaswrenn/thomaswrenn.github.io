@@ -1,0 +1,12 @@
+# Ignore SASS Libraries (Add any additional here and push to repo)
+bourbon
+neat
+# bitters folder
+base
+.sass-cache
+scut
+
+# grunt node modules
+node_modules
+# bower folder
+vendor

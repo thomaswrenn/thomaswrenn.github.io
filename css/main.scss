@@ -1,0 +1,18 @@
+@import 'bourbon/bourbon';
+@import 'neat/neat';
+@import 'base/base';
+@import 'scut/scut';
+
+.main {
+  @include scut-vcenter-ib('.name');
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  text-align: center;
+
+  .name {
+    font-weight: bold;
+  }
+}
