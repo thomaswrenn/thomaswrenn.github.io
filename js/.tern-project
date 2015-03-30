@@ -1,0 +1,12 @@
+{
+  "libs": [
+    "browser"
+  ],
+  "dependencyBudget": 10000,
+  "loadEagerly": [
+    "main.jsx"
+  ],
+  "dontLoad": [
+    "*/node_modules/*"
+  ]
+}
