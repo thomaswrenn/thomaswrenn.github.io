@@ -197,21 +197,44 @@ picture {
 * v1.1.2
 * Docs at http://davidtheclark.github.io/scut
 */
-.main {
+#main {
   bottom: 0;
   left: 0;
   position: absolute;
   right: 0;
   text-align: center;
   top: 0; }
-  .main:before {
+  #main:before {
     content: "";
     height: 100%;
     display: inline-block;
     vertical-align: middle;
     margin-right: -0.25em; }
-  .main > .name {
+  #main > .name-and-title {
     display: inline-block;
     vertical-align: middle; }
-  .main .name {
-    font-weight: bold; }
+  #main .name-and-title {
+    height: 19px; }
+    #main .name-and-title h1,
+    #main .name-and-title h2,
+    #main .name-and-title h3 {
+      font-weight: bold;
+      margin-bottom: 0; }
+    #main .name-and-title h1 {
+      font-size: 19px;
+      margin-bottom: 7px; }
+    #main .name-and-title h3 {
+      font-size: 12px;
+      height: 0; }
+    #main .name-and-title .more-info {
+      -webkit-transition: opacity 0.5s ease-in 0s, width 2s ease-in 2s;
+      -moz-transition: opacity 0.5s ease-in 0s, width 2s ease-in 2s;
+      transition: opacity 0.5s ease-in 0s, width 2s ease-in 2s;
+      bottom: 0;
+      height: 25%;
+      left: 0;
+      opacity: 1;
+      position: absolute;
+      right: 0; }
+      #main .name-and-title .more-info.hide {
+        opacity: 0; }

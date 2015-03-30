@@ -3,8 +3,8 @@
 @import 'base/base';
 @import 'scut/scut';
 
-.main {
-  @include scut-vcenter-ib('.name');
+#main {
+  @include scut-vcenter-ib('.name-and-title');
   bottom: 0;
   left: 0;
   position: absolute;
@@ -12,7 +12,38 @@
   text-align: center;
   top: 0;
 
-  .name {
-    font-weight: bold;
+  .name-and-title {
+    height: 19px;
+
+    h1,
+    h2,
+    h3 {
+      font-weight: bold;
+      margin-bottom: 0;
+    }
+
+    h1 {
+      font-size: 19px;
+      margin-bottom: 7px;
+    }
+
+    h3 {
+      font-size: 12px;
+      height: 0;
+    }
+
+    .more-info {
+      @include transition(opacity 0.5s ease-in 0s, width 2s ease-in 2s);
+      bottom: 0;
+      height: 25%;
+      left: 0;
+      opacity: 1;
+      position: absolute;
+      right: 0;
+
+      &.hide {
+        opacity: 0;
+      }
+    }
   }
 }
