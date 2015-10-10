@@ -35,11 +35,11 @@ var Main = React.createClass({
         return {
             main: 'Tom Wrenn',
             titles: [
-                <span>Frontend Engineer, CreativeWorx</span>,
+                <span>Frontend Engineer, Openhour</span>,
                 <span>@ttfe</span>
             ],
             moreInfos: [
-                <a href="https://creativeworx.com" target="_blank">CreativeWorx</a>,
+                <a href="https://openhour.com" target="_blank">Openhour</a>,
                 <TwitterTimeline/>
             ],
             moreInfoClass: 'hide',
