@@ -39,7 +39,7 @@ var Main = React.createClass({
                 <span>@ttfe</span>
             ],
             moreInfos: [
-                <a href="https://openhour.com" target="_blank">Openhour</a>,
+                <a href="http://openhour.com" target="_blank">Openhour</a>,
                 <TwitterTimeline/>
             ],
             moreInfoClass: 'hide',
