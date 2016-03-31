@@ -37,7 +37,7 @@ var Main = React.createClass({
             titles: [
                 <span>Full Stack Engineer, Nava PBC</span>,
                 <span>@ttfe</span>,
-                <span>LinkedIn</span>
+                <span>Career</span>
             ],
             moreInfos: [
                 <a href="http://navahq.com/" target="_blank">Nava PBC</a>,
