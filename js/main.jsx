@@ -37,12 +37,12 @@ var Main = React.createClass({
             titles: [
                 <span>Full Stack Engineer, Nava PBC</span>,
                 <span>@ttfe</span>,
-                <span>Career</span>
+                <a href="https://www.linkedin.com/in/thomaswrenn" target="_blank">LinkedIn</a>
             ],
             moreInfos: [
                 <a href="http://navahq.com/" target="_blank">Nava PBC</a>,
                 <TwitterTimeline/>,
-                <a href="https://www.linkedin.com/in/thomaswrenn" target="_blank">LinkedIn</a>
+                <span></span>
             ],
             moreInfoClass: 'hide',
             currentTitleNdx: 0
