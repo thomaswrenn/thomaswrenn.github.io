@@ -1,0 +1,9 @@
+{
+  "name": "thomaswrenn.github.io",
+  "private": true,
+  "devDependencies": {
+    "husky": "^8.0.0",
+    "sass": "^1.69.0"
+  }
+}
+

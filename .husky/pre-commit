@@ -1,0 +1,49 @@
+#!/bin/sh
+# Portable Husky pre-commit hook: find Node.js, run Sass, add compiled CSS
+set -e
+
+HOOK_DIR="$(CDPATH= cd -- "$(dirname "$0")" && pwd)"
+ROOT_DIR="$(dirname "$HOOK_DIR")"
+
+find_node() {
+  if command -v node >/dev/null 2>&1; then
+    command -v node; return
+  fi
+  for p in \
+    "$HOME/.volta/bin/node" \
+    "$HOME/.asdf/shims/node" \
+    "/opt/homebrew/bin/node" \
+    "/usr/local/bin/node"
+  do
+    [ -x "$p" ] && echo "$p" && return
+  done
+  if [ -d "$HOME/.nvm/versions/node" ]; then
+    LATEST_NODE="$(ls -dt "$HOME/.nvm/versions/node"/*/bin/node 2>/dev/null | head -1)"
+    [ -x "$LATEST_NODE" ] && echo "$LATEST_NODE" && return
+  fi
+  return 1
+}
+
+NODE_BIN="$(find_node || true)"
+if [ -z "$NODE_BIN" ]; then
+  echo "Error: Node.js not found in PATH or common locations." >&2
+  echo "Tip: Install Node (nvm/volta/asdf/homebrew) or ensure your Git client inherits PATH." >&2
+  # Debug Git client's environment if needed:
+  # env | sort > "$ROOT_DIR/.git/hook-env.pre-commit.txt"
+  exit 1
+fi
+
+SASS_JS="$ROOT_DIR/node_modules/sass/sass.js"
+if [ ! -f "$SASS_JS" ]; then
+  echo "sass not installed; attempting 'pnpm install'..." >&2
+  if command -v pnpm >/dev/null 2>&1; then
+    (cd "$ROOT_DIR" && pnpm install)
+  else
+    echo "pnpm not found. Run 'pnpm install' manually." >&2
+    exit 1
+  fi
+fi
+
+"$NODE_BIN" "$SASS_JS" css/resume.scss css/resume.min.css
+git add css/resume.min.css
+

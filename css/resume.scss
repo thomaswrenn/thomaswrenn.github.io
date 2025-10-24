@@ -1,0 +1,70 @@
+// Rainbow gradient animation variables
+@use "sass:math";
+@use "sass:list";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;
+    background-color: #f5f5f5;
+}
+
+
+$saturation: 25%;
+$lightness: 85%;
+$alpha: 1;
+$steps: 4;
+$loops: 2;
+$threesixty-offset: 90deg;
+$hundred-step: math.div(100%, $steps * $loops);
+$threesixty-step: math.div(360deg, $steps - 1);
+
+$ease-in-strength: 0.3;    // Adjust for stronger/weaker ease-in (0-1)
+$ease-out-strength: 1;   // Adjust for stronger/weaker ease-out (0-1)
+
+// Generate gradient stops dynamically based on $steps
+$gradient-stops: ();
+
+@for $j from 0 through $loops - 1 {
+    @for $i from 0 through $steps - 1 {
+        $hue: $threesixty-offset + ($threesixty-step * $i);
+        $global-step: $j * $steps + $i;
+        $position-start: $hundred-step * $global-step;
+        $position-end: $hundred-step * ($global-step + 1);
+
+        $gradient-stops: list.append($gradient-stops, hsla($hue, $saturation, $lightness, $alpha) $position-start, comma);
+        $gradient-stops: list.append($gradient-stops, hsla($hue, $saturation, $lightness, $alpha) $position-end, comma);
+    }
+}
+
+p {
+    font-size: 1em;
+    font-weight: 600;
+    
+    background: linear-gradient(90deg + 45deg, $gradient-stops);
+    background-size: calc(100% * #{$loops}) 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: rainbowShift 0.90s cubic-bezier($ease-in-strength, 0, 1 - $ease-out-strength, 1) infinite;
+}
+
+@keyframes rainbowShift {
+    0% {
+        // filter: hue-rotate(45deg);
+        background-position: 0% center;
+    }
+    100% {
+        // filter: hue-rotate(45deg + 360deg);
+        background-position: (100% * $loops) center;
+    }
+}
+

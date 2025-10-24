@@ -1,10 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="refresh" content="0; url='docs/resume/swe/2025/Tom Wrenn — Senior Software Engineer — Resume — 2025.pdf'" />
+    <title>Tom Wrenn — Resume</title>
+    <link rel="stylesheet" type="text/css" href="css/resume.min.css">
 </head>
 <body>
-    <p>Redirecting...</p>
+    <p>Downloading...</p>
+    <script>
+        const pdfUrl = 'docs/resume/swe/2025/Tom Wrenn — Senior Software Engineer — Resume — 2025.pdf';
+
+        // Trigger download immediately
+        const link = document.createElement('a');
+        link.href = pdfUrl;
+        link.download = 'Tom Wrenn — Senior Software Engineer — Resume — 2025.pdf';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+
+        // Redirect to PDF preview after 500ms
+        setTimeout(() => {
+            window.location.href = pdfUrl;
+        }, 500);
+    </script>
 </body>
 </html>
 
